@@ -1,0 +1,9 @@
+#!/bin/bash
+
+stop-all.sh
+
+scp -r hadoop hp@slave1:/home/hp/hadoop-2.8.4/etc/
+
+scp -r hadoop hp@slave2:/home/hp/hadoop-2.8.4/etc/
+
+start-all.sh

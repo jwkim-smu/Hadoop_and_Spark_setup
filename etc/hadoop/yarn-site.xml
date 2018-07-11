@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+<configuration>
+
+
+<property>
+            <name>yarn.acl.enable</name>
+            <value>0</value>
+    </property>
+
+    <property>
+            <name>yarn.resourcemanager.hostname</name>
+            <value>master</value>
+    </property>
+
+    <property>
+            <name>yarn.nodemanager.aux-services</name>
+            <value>spark_shuffle,mapreduce_shuffle</value>
+    </property>
+
+
+<property>
+            <name>yarn.nodemanager.aux-services.spark_shuffle.class</name>
+            <value>org.apache.spark.network.yarn.YarnShuffleService</value>
+    </property>
+
+<!-- Site specific YARN configuration properties -->
+
+<property>
+        <name>yarn.nodemanager.resource.memory-mb</name>
+        <value>55296</value>
+</property>
+
+<!--일반적으로 실제 core개수의 1~2배 정도가 적절하다고 한다.-->
+<property>
+<name>yarn.nodemanager.resource.cpu-vcores</name>
+<value>
+60</value>
+</property>
+
+<property>
+<name>yarn.scheduler.maximum-allocation-vcores</name>
+<value>50</value>
+</property>
+
+
+<property>
+        <name>yarn.scheduler.maximum-allocation-mb</name>
+        <value>55296</value>
+</property>
+
+<property>
+        <name>yarn.scheduler.minimum-allocation-mb</name>
+        <value>1024</value>
+</property>
+
+
+<property>
+<name>yarn.application.classpath</name>
+<value>
+/home/hp/hadoop-2.8.4/etc/hadoop,
+/home/hp/hadoop-2.8.4/*,
+/home/hp/hadoop-2.8.4/lib/*,
+/home/hp/hadoop-2.8.4/share/hadoop/common/*,
+/home/hp/hadoop-2.8.4/share/hadoop/common/lib/*
+/home/hp/hadoop-2.8.4/share/hadoop/hdfs/*,
+/home/hp/hadoop-2.8.4/share/hadoop/hdfs/lib/*,
+/home/hp/hadoop-2.8.4/share/hadoop/mapreduce/*,
+/home/hp/hadoop-2.8.4/share/hadoop/mapreduce/lib/*,
+/home/hp/hadoop-2.8.4/share/hadoop/tools/lib/*,
+/home/hp/hadoop-2.8.4/share/hadoop/yarn/*,
+/home/hp/hadoop-2.8.4/share/hadoop/yarn/lib/*,
+/home/hp/spark-2.3.0-bin-hadoop2.7/jars/spark-yarn_2.11-2.3.0.jar,
+/home/hp/spark-2.3.0-bin-hadoop2.7/jars/*,
+/home/hp/spark-2.3.0-bin-hadoop2.7/yarn/*
+</value>
+</property>
+
+
+</configuration>
