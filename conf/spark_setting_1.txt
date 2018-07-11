@@ -1,0 +1,10 @@
+#1# spark.yarn.archive 파일 만들고 업로드하기
+
+hadoop@NameNode:~$ cd $SPARK_HOME
+hadoop@NameNode:~/spark/latest$ jar cv0f spark-libs.jar -C jars/ .
+hadoop@NameNode:~/spark/latest$ hdfs dfs -mkdir -p /spark/yarn/archive
+hadoop@NameNode:~/spark/latest$ hdfs dfs -put spark-libs.jar /spark/yarn/archive
+hadoop@NameNode:~/spark/latest$ hdfs dfs -setrep -w 3 hdfs:///spark/yarn/archive/spark-libs.jar
+Replication 3 set: hdfs:///spark/yarn/archive/spark-libs.jar
+Waiting for hdfs:///spark/yarn/archive/spark-libs.jar .... done
+hadoop@NameNode:~/spark/latest$ rm spark-libs.jar
